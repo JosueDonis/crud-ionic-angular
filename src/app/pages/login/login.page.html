@@ -1,0 +1,17 @@
+<ion-content fullscreen="true">
+<form id="formLogin" class="form-login p-10" #form="ngForm" (ngSubmit)="login()">
+  <div class="flex items-center justify-center">
+    <h2 class="text-3xl">Claro web</h2>
+  </div>
+  <ion-item class="pb-8">
+    <ion-label  position="floating">Correo electrónico</ion-label>
+    <ion-input placeholder="Correo" name="username" [(ngModel)]="username"></ion-input>
+  </ion-item>
+  <ion-item class="pb-8">
+    <ion-label position="floating">Contraseña</ion-label>
+    <ion-input placeholder="****" name="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+
+  <ion-button type="submit" form="formLogin" expand="full" shape="round" size="large">Iniciar sesión</ion-button>
+</form>
+</ion-content>
