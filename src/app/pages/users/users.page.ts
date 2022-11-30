@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { UsersService } from 'src/app/services/users/users.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { UsersService } from 'src/app/services/users/users.service';
 export class UsersPage implements OnInit {
 
   users: any[] = [];
-  constructor(public userService: UsersService) { }
+  constructor(public userService: UsersService, public authService: AuthService) { }
 
   ngOnInit() {
     this.getUsers();
@@ -20,6 +21,10 @@ export class UsersPage implements OnInit {
       const {rows} = res;
       this.users = rows;
     })
+  }
+
+  openMenu() {
+    this.authService.setMenu();
   }
 
 }

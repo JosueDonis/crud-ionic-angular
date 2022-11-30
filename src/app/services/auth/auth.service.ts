@@ -9,7 +9,12 @@ import { IAuth } from '../../interfaces/auth';
 export class AuthService {
   private authSubject: BehaviorSubject<any>;
   public auth: Observable<any>;
+  private menuSubject: BehaviorSubject<any>;
+  public menu: Observable<any>;
   constructor(public httpClient: HttpClient) {
+    this.menuSubject = new BehaviorSubject<any>({collapse: false});
+    this.menu = this.menuSubject.asObservable();
+
     try {
       const session: any = localStorage.getItem('session')
         ? localStorage.getItem('session')
@@ -46,5 +51,13 @@ export class AuthService {
 
   get isAuthenticated(): boolean {
     return this.authSubject.value !== null;
+  }
+
+  setMenu(){
+    this.menuSubject.next({collapse: !this.menuSubject.value.collapse});
+  }
+
+  get menuValue(): any {
+    return this.menuSubject.value;
   }
 }

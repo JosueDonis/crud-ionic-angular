@@ -1,0 +1,18 @@
+<ion-split-pane contentId="main-content" [class.menu-only-icon]="authService.menuValue.collapse">
+  <ion-menu contentId="main-content" type="overlay" [hidden]="!isAuth">
+    <ion-content>
+      <ion-list id="inbox-list">
+        <ion-list-header>My app</ion-list-header>
+        <!-- <ion-note>app</ion-note> -->
+
+        <div auto-hide="false" *ngFor="let p of appPages; let i = index">
+          <div class="rounded-full items-center flex p-4 hover:bg-gray-300 hover:cursor-pointer item mb-2" (click)="selectPage(p)" [class.selected]="p.url === router.url">
+            <ion-icon class="icon" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+            <p class="ml-2 label">{{ p.title }}</p>
+          </div>
+        </div>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ng-content></ng-content>
+</ion-split-pane>

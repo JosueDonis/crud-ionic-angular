@@ -6,11 +6,6 @@ import { AuthService } from './services/auth/auth.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  public appPages = [
-    { title: 'Usuarios', url: '/users', icon: 'people' },
-    { title: 'Categorias', url: '/categories', icon: 'paper-plane' },
-    { title: 'Empresas', url: '/business', icon: 'business' },
-  ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   isAuth: boolean | undefined;
   constructor(public authService: AuthService) {
